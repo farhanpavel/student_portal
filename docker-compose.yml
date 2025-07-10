@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: mariadb:10.6
+    environment:
+      MYSQL_DATABASE: student_db
+      MYSQL_USER: student_user
+      MYSQL_PASSWORD: student_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./django_app:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: student_db
+      DB_USER: student_user
+      DB_PASSWORD: student_password
+
+volumes:
+  db_data:
