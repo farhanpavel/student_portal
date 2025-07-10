@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add New Student</title>
+    <title>Delete Student</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -25,58 +25,40 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         h1 {
-            margin-bottom: 20px;
             font-size: 26px;
-            text-align: center;
+            margin-bottom: 20px;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        form p {
-            margin: 0;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        input, select, textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
         }
 
         button {
-            background-color: #28a745;
+            background-color: #dc3545;
             color: white;
-            padding: 10px 15px;
+            padding: 10px 20px;
+            font-size: 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            margin-right: 10px;
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #c82333;
         }
 
         .cancel-link {
-            display: inline-block;
-            margin-top: 20px;
             text-decoration: none;
-            color: #dc3545;
+            color: #007bff;
             font-weight: bold;
-            text-align: center;
+            font-size: 16px;
         }
 
         .cancel-link:hover {
@@ -91,13 +73,13 @@
 </header>
 
 <main>
-    <h1>Add New Student</h1>
+    <h1>Delete Student</h1>
+    <p>Are you sure you want to delete <strong>"{{ student.name }}"</strong>?</p>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit">Confirm Delete</button>
+        <a class="cancel-link" href="{% url 'student_list' %}">Cancel</a>
     </form>
-    <a class="cancel-link" href="{% url 'student_list' %}">Cancel</a>
 </main>
 
 </body>

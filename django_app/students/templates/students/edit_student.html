@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add New Student</title>
+    <title>Edit Student</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -57,7 +57,7 @@
         }
 
         button {
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -67,7 +67,7 @@
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #0069d9;
         }
 
         .cancel-link {
@@ -91,11 +91,11 @@
 </header>
 
 <main>
-    <h1>Add New Student</h1>
+    <h1>Edit Student</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit">Update</button>
     </form>
     <a class="cancel-link" href="{% url 'student_list' %}">Cancel</a>
 </main>
